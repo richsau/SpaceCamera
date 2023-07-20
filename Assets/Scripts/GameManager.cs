@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.Playables;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class GameManager : MonoBehaviour
     private PlayableDirector _director;
     [SerializeField]
     private Canvas _canvas;
+    [SerializeField]
+    private GameObject _creditText;
+    [SerializeField]
+    private GameObject _instructionText;
     private int _currentCamera;
     private bool _playerActive = true;
     private Vector3 _lastMousePosition;
@@ -20,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _lastMousePosition = Input.mousePosition;
+        StartCoroutine(ShowCredits());
         StartCoroutine(PlayerInactive());
     }
 
@@ -92,7 +98,7 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(10f);
             if (_playerActive)
             {
                 _playerActive = false;
@@ -106,5 +112,13 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator ShowCredits()
+    {
+        _creditText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(10f);
+        _creditText.gameObject.SetActive(false);
+        _instructionText.gameObject.SetActive(true);
     }
 }
