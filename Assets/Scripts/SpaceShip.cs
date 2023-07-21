@@ -55,14 +55,10 @@ public class SpaceShip : MonoBehaviour
         Vector3 rotateH = new Vector3(0, _horizontal, 0);
         transform.Rotate(rotateH * _rotSpeed * Time.deltaTime);
 
-
         Vector3 rotateV = new Vector3(_vertical, 0, 0);
         transform.Rotate(rotateV * _rotSpeed * Time.deltaTime);
 
-
         transform.Rotate(new Vector3(0, 0, -_horizontal * 0.2f), Space.Self);
-
         transform.position += transform.forward * _currentSpeed * Time.deltaTime;
-
     }
 }
