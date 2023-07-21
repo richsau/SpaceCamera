@@ -6,7 +6,6 @@ public class Ring : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Got Colliosion");
         Destroy(transform.parent.gameObject);
     }
 }
